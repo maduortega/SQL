@@ -1,0 +1,142 @@
+
+Comparação Entre Python e SQL (MySQL Workbench) — Variáveis, Funções e Operadores
+
+===============================================================
+🔢 DECLARAÇÃO DE VARIÁVEIS
+
+| Conceito                | Python                          | SQL (MySQL Workbench)                          |
+|-------------------------|---------------------------------|------------------------------------------------|
+| Declarar variável int   | a = 0                           | DECLARE a INT DEFAULT 0;                       |
+| Declarar variável texto | nome = "João"                   | DECLARE nome VARCHAR(50) DEFAULT 'João';       |
+| Declarar booleano       | ativo = True                    | DECLARE ativo BOOLEAN DEFAULT TRUE;            |
+
+Obs: Em MySQL, as variáveis são declaradas com `DECLARE` dentro de funções, procedures ou blocos `BEGIN...END`.
+
+===============================================================
+🧠 FUNÇÕES
+
+| Conceito          | Python                              | SQL (MySQL Workbench)                                   |
+|-------------------|-------------------------------------|---------------------------------------------------------|
+| Definir função    | def soma(a, b):                     | CREATE FUNCTION soma(a INT, b INT) RETURNS INT          |
+| Retornar valor    | return a + b                        | RETURN a + b;                                           |
+| Chamar função     | soma(2, 3)                          | SELECT soma(2, 3);                                      |
+| Imprimir resultado| print("Resultado")                  | SELECT 'Resultado';                                     |
+                                                                                                                    |
+Obs: `print()` em Python é usado para mostrar resultado no console. Em SQL, usamos `SELECT` para exibir dados.      |
+
+===============================================================
+🔁 ESTRUTURAS DE REPETIÇÃO
+
+| Conceito          | Python                              | SQL (MySQL Workbench)                                 |
+|-------------------|-------------------------------------|-------------------------------------------------------|
+| Laço for          | for i in range(5):                  | LOOP ou WHILE (com contador manual)                   |
+| Laço while        | while x < 10:                       | WHILE x < 10 DO ... SET x = x + 1; END WHILE;         |
+
+Obs: Em MySQL não existe `for`, apenas `WHILE`, `LOOP` ou `REPEAT`.
+
+===============================================================
+⚙️ OPERADORES LÓGICOS
+
+| Operador Lógico | Python       | SQL (MySQL)  | Exemplo em SQL                            |
+|------------------|--------------|--------------|--------------------------------------------|
+| E lógico         | and          | AND          | WHERE idade > 18 AND ativo = TRUE          |
+| OU lógico        | or           | OR           | WHERE cidade = 'SP' OR cidade = 'RJ'       |
+| Negação lógica   | not          | NOT          | WHERE NOT ativo                            |
+
+===============================================================
+➗ OPERADORES MATEMÁTICOS
+
+| Operador         | Python       | SQL (MySQL)                      | Exemplo SQL                      |
+|------------------|--------------|----------------------------------|----------------------------------|
+| Soma             | +            | +                                | SELECT 2 + 3;                    |
+| Subtração        | -            | -                                | SELECT 5 - 2;                    |
+| Multiplicação    | *            | *                                | SELECT 4 * 2;                    |
+| Divisão          | /            | /                                | SELECT 10 / 2;                   |
+| Divisão inteira  | //           | DIV                              | SELECT 10 DIV 3;                 |
+| Resto (módulo)   | %            | % ou MOD()                       | SELECT 10 % 3; SELECT MOD(10, 3) |
+| Igualdade        | ==           | =                                | WHERE idade = 18                 |
+| Diferença        | != ou <>     | <> ou !=                         | WHERE nome <> 'João'             |
+| Maior que        | >            | >                                | WHERE idade > 20                 |
+| Menor que        | <            | <                                | WHERE idade < 20                 |
+
+===============================================================
+🔀 ESTRUTURAS CONDICIONAIS
+
+| Conceito             | Python                               | SQL (MySQL Workbench)                                 |
+|----------------------|--------------------------------------|--------------------------------------------------------|
+| Condicional simples  | if x > 10:                           | IF x > 10 THEN                                        |
+|                      |     print("Maior que 10")            |     -- comandos                                      |
+|                      |                                      | END IF;                                              |
+| Condicional com else | if x > 10:                           | IF x > 10 THEN                                        |
+|                      |     print("Maior que 10")            |     -- comandos                                      |
+|                      | else:                                | ELSE                                                  |
+|                      |     print("Menor ou igual a 10")     |     -- comandos                                      |
+|                      |                                      | END IF;                                              |
+| Condicional com elif | if x > 10:                           | IF x > 10 THEN                                        |
+|                      |     print("Maior que 10")            |     -- comandos                                      |
+|                      | elif x == 10:                        | ELSEIF x = 10 THEN                                    |
+|                      |     print("Igual a 10")              |     -- comandos                                      |
+|                      | else:                                | ELSE                                                  |
+|                      |     print("Menor que 10")            |     -- comandos                                      |
+|                      |                                      | END IF;                                              |
+
+Obs: O SQL do MySQL Workbench usa IF...ELSEIF...ELSE dentro de procedures, functions ou blocos BEGIN...END.
+
+===============================================================
+
+⚙️ PROCEDURES
+
+| Conceito                | Python                              | SQL (MySQL Workbench)                                 |
+|-------------------------|-------------------------------------|--------------------------------------------------------|
+| Definir procedure       | def minha_procedure():              | DELIMITER //                                          |
+|                         |     # código                        | CREATE PROCEDURE minha_procedure()                     |
+|                         |                                     | BEGIN                                                  |
+|                         |                                     |     -- código                                          |
+|                         |                                     | END //                                                |
+|                         |                                     | DELIMITER ;                                           |
+| Chamar procedure        | minha_procedure()                   | CALL minha_procedure();                               |
+
+Obs: Procedures no MySQL são blocos de código armazenados que podem executar operações complexas, semelhante a funções/métodos em Python, mas podem ou não retornar valores.
+
+🆚 Diferença entre FUNCTION e PROCEDURE:
+
+- **FUNCTION** sempre retorna um valor (return) e pode ser usada em expressões SQL (ex: SELECT).
+- **PROCEDURE** (como se fosse uma função que já tem um print dentro dela), executa uma série de comandos, podendo modificar dados, mas não retorna um valor diretamente (embora possa usar parâmetros OUT).
+- Em Python, as funções (`def`) retornam valores ou None, enquanto procedures são mais similares a funções sem retorno ou métodos que alteram estado sem retornar.
+
+===============================================================
+🔗 CONCATENAÇÃO DE STRINGS
+
+| Conceito            | Python                                 | SQL (MySQL Workbench)                                 |
+|---------------------|----------------------------------------|-------------------------------------------------------|
+| Concatenar textos   | nome + " " + sobrenome                 | CONCAT(nome, ' ', sobrenome)                          |
+| Exemplo prático     | nome = "João"                          | SELECT CONCAT('João', ' ', 'Silva');                  |
+|                     | sobrenome = "Silva"                    | => Resultado: 'João Silva'                            |
+|                     | nome_completo = nome + " " + sobrenome |                                                       |
+|                     | print(nome_completo)                   |                                                       |
+| Resultado final     | João Silva                             | João Silva                                            |
+
+Obs: Em Python usamos o operador `+` para juntar strings.  
+Em SQL usamos a função `CONCAT()` para unir colunas ou textos.
+
+Dica: Também é possível concatenar colunas com valores fixos, por exemplo:
+```sql
+SELECT CONCAT('Código: ', id_cliente) FROM clientes;
+
+===============================================================
+📝 RESUMO
+
+- Python é procedural e orientado a objetos.
+- MySQL (via Workbench) é declarativo, usado com banco de dados.
+- MySQL usa `DECLARE` e `SET` para variáveis dentro de blocos.
+- `print()` em Python equivale a `SELECT` no SQL para exibir dados.
+- Estruturas de repetição existem, mas apenas dentro de procedures ou funções.
+
+===============================================================
+📘 DICAS PARA ESTUDO
+
+- Estude CREATE FUNCTION, CREATE PROCEDURE e DECLARE em MySQL.
+- Explore os comandos: WHILE, LOOP, IF...THEN, CASE.
+- Consulte documentação oficial do MySQL para padrões específicos.
+
+===============================================================
